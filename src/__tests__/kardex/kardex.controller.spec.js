@@ -136,4 +136,66 @@ describe(KardexController, () => {
     expect(currentBook.book.outcome.at(0).concept).toEqual('outcome test');
     expect(currentBook.book.income.at(0).totalValue).toEqual(100);
   });
+
+  it('should return correct balance', () => {
+    const productController = new ProductController();
+    const supplierController = new SupplierController();
+
+    productController.addProduct({
+      name: 'foo',
+      description: 'description',
+      price: 0.1,
+    });
+
+    supplierController.addSupplier({
+      name: 'coca cola',
+    });
+
+    const currentProduct = productController.getAll().at(0);
+    const currentSupplier = supplierController.getAll().at(0);
+
+    controller.registerProduct({
+      maxItems: 10,
+      minItems: 5,
+      productId: currentProduct.id,
+      supplierId: currentSupplier.id,
+      reference: 'PRODUCT_REF',
+    });
+
+    const currentKardex = controller.getAll().at(0);
+
+    controller.addIncome({
+      detail: {
+        concept: null,
+        date: new Date(),
+        quantity: 100,
+        totalValue: 100,
+        unitValue: 1,
+      },
+      kardexId: currentKardex.id,
+    });
+
+    controller.addOutcome({
+      detail: {
+        concept: 'outcome test',
+        date: new Date(),
+        quantity: 10,
+        totalValue: 10,
+        unitValue: 1,
+      },
+      kardexId: currentKardex.id,
+    });
+
+    const balance = controller.getBalance(currentKardex.id);
+
+    expect(balance instanceof HandleError).toBeFalsy();
+    expect(balance.product.id).toBe(currentProduct.id);
+    expect(balance.reference).toEqual('PRODUCT_REF');
+    expect(balance.book.income.length).toBe(2);
+    expect(balance.book.outcome.length).toBe(2);
+    expect(balance.book.detail).toStrictEqual({
+      quantity: 90,
+      totalValue: 90
+    });
+  });
 });

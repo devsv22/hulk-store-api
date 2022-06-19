@@ -30,4 +30,16 @@ router.post('/outcome', ...kardexEntriesValidations, (req, res) => {
   }
 });
 
+router.get('/:id/income', (req, res) =>
+  handleResponse(res, controller.getBookIncome(req.params.id)),
+);
+
+router.get('/:id/outcome', (req, res) =>
+  handleResponse(res, controller.getBookOutcome(req.params.id)),
+);
+
+router.get('/:id/balance', (req, res) =>
+  handleResponse(res, controller.getBalance(req.params.id)),
+);
+
 export default router;
