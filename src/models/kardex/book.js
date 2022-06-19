@@ -8,4 +8,9 @@ export class KardexBook {
 
   /** @type {Detail[]} */
   outcome;
+
+  constructor(income, outcome) {
+    this.income = income;
+    this.outcome = outcome;
+  }
 }

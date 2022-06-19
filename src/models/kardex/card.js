@@ -3,7 +3,7 @@
  * @typedef {import('../supplier').Supplier} Supplier
  */
 
-export class KardexIdentifier {
+export class KardexCard {
   /** @type {Product} */
   product;
 
@@ -18,4 +18,12 @@ export class KardexIdentifier {
 
   /** @type {number} */
   minItems;
+
+  constructor(product, supplier, maxItems, minItems, reference) {
+    this.product = product;
+    this.supplier = supplier;
+    this.maxItems = maxItems;
+    this.minItems = minItems;
+    this.reference = reference;
+  }
 }

@@ -4,6 +4,7 @@ import { ProductController } from './product.controller';
 import { productValidators } from './product.validators';
 
 const router = Router();
+
 const controller = new ProductController();
 
 router.get('/', (_, res) => res.json(controller.getAll()));
