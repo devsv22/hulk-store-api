@@ -19,7 +19,7 @@ describe('MemoryDb', () => {
 
     result = MemoryDb.get('foo');
 
-    expect(result).toBeUndefined();
+    expect(result).toBeNull();
   });
 
   it('should clean db', () => {

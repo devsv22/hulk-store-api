@@ -5,8 +5,8 @@ export class MemoryDb {
     this.#collection[key] = value;
   }
 
-  static get(key) {
-    return this.#collection[key];
+  static get(key, defaultValue = null) {
+    return this.#collection[key] ?? defaultValue;
   }
 
   static remove(key) {

@@ -1,3 +1,5 @@
+import * as uuid from 'uuid';
+
 export class Product {
   /** @type {string} */
   id;
@@ -10,4 +12,11 @@ export class Product {
 
   /** @type {number} */
   price;
+
+  constructor(name, description, price) {
+    this.id = uuid.v4();
+    this.name = name;
+    this.description = description;
+    this.price = price;
+  }
 }
