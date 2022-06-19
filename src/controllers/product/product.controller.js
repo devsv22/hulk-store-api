@@ -2,8 +2,8 @@ import { MemoryDb } from '@/config/db';
 import * as uuid from 'uuid';
 
 /**
- * @typedef {import('../..//models/product').Product} Product
- * @typedef {import('../..//dto/product').ProductDto} ProductDto
+ * @typedef {import('@/models/product').Product} Product
+ * @typedef {import('@//dto/product').ProductDto} ProductDto
  */
 
 export class ProductController {

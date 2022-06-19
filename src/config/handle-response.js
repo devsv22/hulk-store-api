@@ -20,6 +20,12 @@ export const handleResponse = (res, callback, successStatusCode = 200) => {
   return result;
 };
 
+/**
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @returns {boolean} - if request has errors will return true
+ */
 export const hasErrors = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
