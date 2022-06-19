@@ -133,5 +133,7 @@ describe(KardexController, () => {
 
     expect(currentBook.book.income.length).toBe(1);
     expect(currentBook.book.outcome.length).toBe(1);
+    expect(currentBook.book.outcome.at(0).concept).toEqual('outcome test');
+    expect(currentBook.book.income.at(0).totalValue).toEqual(100);
   });
 });
