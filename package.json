@@ -6,7 +6,8 @@
     "start": "nodemon --exec babel-node --require dotenv/config --experimental-modules --es-module-specifier-resolution=node src/main.js",
     "build": "babel src/main.js -d dist/",
     "format": "prettier --write \"**/*.{js,json}\"",
-    "test": "jest ."
+    "test": "jest .",
+    "test:watch": "jest . --watch"
   },
   "author": "",
   "license": "ISC",

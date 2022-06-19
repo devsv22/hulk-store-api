@@ -16,4 +16,8 @@ export class MemoryDb {
   static clear() {
     this.#collection = {};
   }
+
+  static keys() {
+    return Object.keys(this.#collection);
+  }
 }
